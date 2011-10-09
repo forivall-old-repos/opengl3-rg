@@ -1,0 +1,7 @@
+
+syntax: regexp
+(Debug|Release)/.*\.(a|d|o)
+.*/.svn/
+syntax: glob
+src/*.o
+libopengl3-rg.a
