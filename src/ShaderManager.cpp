@@ -116,19 +116,11 @@ void glrg::ShaderManager::addProgramInfo(
 	info[program][attrib_loc] = {
 			attrib_loc, unit_size, type};
 	
-	printf("stored %d, %d, %d, %d\n", program,
-			info[program][attrib_loc].attrib_position,
-			info[program][attrib_loc].unit_size,
-			info[program][attrib_loc].type);
     //info[program][attrib_name] = ShaderAttribInfo(
 //    glGetAttribLocation(program, attrib_name), unit_size, type);
 }
 
 GLint glrg::ShaderManager::getUnitSize(GLuint program, GLuint attrib_loc) {
-	printf("restored %d, %d, %d, %d\n", program,
-				info[program][attrib_loc].attrib_position,
-				info[program][attrib_loc].unit_size,
-				info[program][attrib_loc].type);
     return info[program][attrib_loc].unit_size;
 }
 
@@ -141,10 +133,6 @@ ShaderManager *glrg::ShaderManager::getSingleton()
 }
 
 GLint glrg::ShaderManager::getType(GLuint program, GLuint attrib_loc) {
-	printf("restored %d, %d, %d, %d\n", program,
-				info[program][attrib_loc].attrib_position,
-				info[program][attrib_loc].unit_size,
-				info[program][attrib_loc].type);
     return info[program][attrib_loc].type;
 }
 
