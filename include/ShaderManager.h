@@ -41,20 +41,23 @@ GLuint InitShader( const char* vertexShaderFile,
 GLuint LinkShader(GLuint program);
 
 class ShaderManager {
-    std::map<GLuint, std::map<GLchar*, ShaderAttribInfo> > info;
+private:
+    std::map<GLuint, std::map<GLuint, ShaderAttribInfo> > info;
+	static ShaderManager *singleton;
 public:
+    ShaderManager();
+    
     static ShaderManager *getSingleton();
     
     void addProgramInfo(GLuint, 
-            GLchar *, 
+            GLuint, 
             GLint,
             GLenum);
     
-    GLint getUnitSize(GLuint, GLchar*);
-    GLint getType(GLuint, GLchar*);
+    GLint getUnitSize(GLuint, GLuint);
+    GLint getType(GLuint, GLuint);
     
 };
 
 }
-
 #endif /* SHADERMANAGER_H_ */

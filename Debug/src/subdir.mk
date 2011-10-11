@@ -3,10 +3,6 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-O_SRCS += \
-../src/ShaderManager.o \
-../src/math3d.o 
-
 CPP_SRCS += \
 ../src/Aggregate.cpp \
 ../src/Item.cpp \

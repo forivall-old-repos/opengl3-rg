@@ -37,13 +37,13 @@ public:
     
     void setNumVerticies(GLsizei);
     void setDrawMode(GLenum);
-    void setVertexData(const GLfloat*, GLsizeiptr, GLchar *);
+    void setVertexData(const GLfloat*, GLsizeiptr, GLuint);
     void setUniformData(const GLfloat*, GLsizei, GLchar *);
     void setShaderProgram(GLuint);
     
     virtual void Draw();
     
-    std::map<std::string, GLRGhandle *> *vertexData;
+    std::map<GLuint, GLRGhandle *> *vertexData;
     std::map<std::string, GLRGhandle *> *uniformData;
     GLuint vertexArrayObject;
     GLuint shader;

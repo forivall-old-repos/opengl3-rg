@@ -12,9 +12,9 @@ namespace glrg {
 
 class Guard {
 public:
-    virtual ~Guard();
+//    virtual ~Guard();
     
-    virtual void Draw();
+    virtual void Draw() = 0;
 };
 
 }

@@ -7,6 +7,10 @@
 
 #include "ShaderManager.h"
 
+using namespace glrg;
+
+ShaderManager *ShaderManager::singleton;
+
 // Create a NULL-terminated string by reading the provided file
 char* glrg::ReadShaderSource(const char* shaderFile)
 {
@@ -99,19 +103,48 @@ GLuint glrg::LinkShader(GLuint program) {
     return program;
 }
 
+glrg::ShaderManager::ShaderManager() {
+	
+}
+
 void glrg::ShaderManager::addProgramInfo(
         GLuint program, 
-        GLchar *attrib_name, 
+        GLuint attrib_loc, 
         GLint unit_size,
         GLenum type) {
     
+	info[program][attrib_loc] = {
+			attrib_loc, unit_size, type};
+	
+	printf("stored %d, %d, %d, %d\n", program,
+			info[program][attrib_loc].attrib_position,
+			info[program][attrib_loc].unit_size,
+			info[program][attrib_loc].type);
     //info[program][attrib_name] = ShaderAttribInfo(
 //    glGetAttribLocation(program, attrib_name), unit_size, type);
 }
 
-GLint glrg::ShaderManager::getUnitSize(GLuint program, GLchar *attrib_name) {
-    return this->info[program][attrib_name].unit_size;
+GLint glrg::ShaderManager::getUnitSize(GLuint program, GLuint attrib_loc) {
+	printf("restored %d, %d, %d, %d\n", program,
+				info[program][attrib_loc].attrib_position,
+				info[program][attrib_loc].unit_size,
+				info[program][attrib_loc].type);
+    return info[program][attrib_loc].unit_size;
 }
-GLint glrg::ShaderManager::getType(GLuint program, GLchar *attrib_name) {
-    return this->info[program][attrib_name].type;
+
+ShaderManager *glrg::ShaderManager::getSingleton()
+{
+	if(singleton == NULL){
+		singleton = new ShaderManager();
+	}
+	return singleton;
 }
+
+GLint glrg::ShaderManager::getType(GLuint program, GLuint attrib_loc) {
+	printf("restored %d, %d, %d, %d\n", program,
+				info[program][attrib_loc].attrib_position,
+				info[program][attrib_loc].unit_size,
+				info[program][attrib_loc].type);
+    return info[program][attrib_loc].type;
+}
+
