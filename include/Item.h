@@ -37,6 +37,7 @@ public:
     
     void setNumVerticies(GLsizei);
     void setDrawMode(GLenum);
+    void setVertexData(const GLfloat*, GLsizeiptr, GLchar *);
     void setVertexData(const GLfloat*, GLsizeiptr, GLuint);
     void setUniformData(const GLfloat*, GLsizei, GLchar *);
     void setShaderProgram(GLuint);

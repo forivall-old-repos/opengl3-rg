@@ -41,7 +41,11 @@ void Item::setDrawMode(GLenum mode) {
     this->drawMode = mode;
 }
 
-void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLuint attrib_loc) {
+void Item::setVertexData(const GLfloat *data, GLsizeiptr size, GLchar* attrib_name) {
+	return this->setVertexData(data, size, glGetAttribLocation(this->shader, attrib_name));
+}
+
+void Item::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint attrib_loc) {
     GLRGhandle *handle = this->vertexData->operator [](attrib_loc);
     
     if(handle == NULL) {
