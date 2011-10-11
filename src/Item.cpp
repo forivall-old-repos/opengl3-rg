@@ -43,7 +43,7 @@ void Item::setDrawMode(GLenum mode) {
 
 void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLuint attrib_loc) {
     GLRGhandle *handle = this->vertexData->operator [](attrib_loc);
-    printf("%d\n", handle);
+    
     if(handle == NULL) {
         // initialize the data
         handle = new GLRGhandle;
@@ -61,9 +61,6 @@ void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLuint attrib_loc
         glBindVertexArray(vertexArrayObject);
         glEnableVertexAttribArray(handle->attribLocation);
         glBindBuffer(GL_ARRAY_BUFFER, handle->GLhandle);
-        printf("loc:%d, size:%d, type:%d\n",handle->attribLocation, 
-                shaders->getUnitSize(this->shader, attrib_loc), 
-                shaders->getType(this->shader, attrib_loc));
         glVertexAttribPointer(
                 handle->attribLocation, 
                 shaders->getUnitSize(this->shader, attrib_loc), 
@@ -92,7 +89,6 @@ void Item::setShaderProgram(GLuint program) {
 
 void Item::Draw() {
     // todo: also load shader and uniforms.
-    puts("drawing");
     // load our vertex array object, draw it, unload it.
     glBindVertexArray(vertexArrayObject);
 //    glDrawArrays(this->drawMode, 0, this->numVerticies);
