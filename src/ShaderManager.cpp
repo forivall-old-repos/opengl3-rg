@@ -30,7 +30,7 @@ char* glrg::ReadShaderSource(const char* shaderFile)
 // Create a GLSL program object from vertex and fragment shader files
 GLuint glrg::InitShader(const char* vShaderFile, const char* fShaderFile)
 {
-    ShaderData  shaders[2] = {
+    ShaderData shaders[2] = {
             { vShaderFile, GL_VERTEX_SHADER, NULL },
             { fShaderFile, GL_FRAGMENT_SHADER, NULL }
     };
