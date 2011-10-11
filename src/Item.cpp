@@ -6,12 +6,13 @@
  */
 
 #include "Item.h"
+#include "ShaderManager.h"
 
 using namespace glrg;
 
 void Item::construct(ShaderManager *manager) {
     this->shaders = manager;
-    this->vertexData  = new std::map<std::string, GLRGhandle *>();
+    this->vertexData  = new std::map<GLuint, GLRGhandle *>();
     this->uniformData = new std::map<std::string, GLRGhandle *>();
     glGenVertexArrays(1, &vertexArrayObject);
 //    glBindVertexArray(vertexArrayObject);
@@ -40,14 +41,16 @@ void Item::setDrawMode(GLenum mode) {
     this->drawMode = mode;
 }
 
-void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLchar *attrib_name) {
-    GLRGhandle *handle = this->vertexData->operator [](attrib_name);
+void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLuint attrib_loc) {
+    GLRGhandle *handle = this->vertexData->operator [](attrib_loc);
+    printf("%d\n", handle);
     if(handle == NULL) {
         // initialize the data
         handle = new GLRGhandle;
         glGenBuffers(1, &handle->GLhandle);
         handle->size = size;
-        handle->attribLocation = glGetAttribLocation(this->shader, attrib_name);
+//        handle->attribLocation = glGetAttribLocation(this->shader, attrib_name);
+        handle->attribLocation = attrib_loc;
         
         // buffer the data into video memory
         glBindBuffer(GL_ARRAY_BUFFER, handle->GLhandle);
@@ -57,13 +60,17 @@ void Item::setVertexData(const GLfloat* data, GLsizeiptr size, GLchar *attrib_na
         //  and push the attributes to video memory  
         glBindVertexArray(vertexArrayObject);
         glEnableVertexAttribArray(handle->attribLocation);
-//        glBindBuffer(GL_ARRAY_BUFFER, handle->GLhandle);
+        glBindBuffer(GL_ARRAY_BUFFER, handle->GLhandle);
+        printf("loc:%d, size:%d, type:%d\n",handle->attribLocation, 
+                shaders->getUnitSize(this->shader, attrib_loc), 
+                shaders->getType(this->shader, attrib_loc));
         glVertexAttribPointer(
                 handle->attribLocation, 
-                shaders->getUnitSize(this->shader, attrib_name), 
-                shaders->getType(this->shader, attrib_name), 
+                shaders->getUnitSize(this->shader, attrib_loc), 
+                shaders->getType(this->shader, attrib_loc), 
                 GL_FALSE, 0, 0);
-        glBindVertexArray(0);
+        
+//        glBindVertexArray(0);
     }
     else {
         // just overwrite the data. done.
@@ -85,9 +92,10 @@ void Item::setShaderProgram(GLuint program) {
 
 void Item::Draw() {
     // todo: also load shader and uniforms.
-    
+    puts("drawing");
     // load our vertex array object, draw it, unload it.
     glBindVertexArray(vertexArrayObject);
-    glDrawArrays(this->drawMode, 0, this->numVerticies);
+//    glDrawArrays(this->drawMode, 0, this->numVerticies);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
     glBindVertexArray(0);
 }
