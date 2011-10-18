@@ -21,7 +21,7 @@ struct GLRGhandle {
     GLuint attribLocation;
 };
 
-class Item : public glrg::Guard 
+class IndependantItem : public glrg::Guard 
 {
     void construct(ShaderManager *);
 
@@ -30,10 +30,10 @@ protected:
     GLenum drawMode;
     
 public:
-    Item();
-    Item(ShaderManager *);
+    IndependantItem();
+    IndependantItem(ShaderManager *);
     
-    virtual ~Item();
+    virtual ~IndependantItem();
     
     void setNumVerticies(GLsizei);
     void setDrawMode(GLenum);

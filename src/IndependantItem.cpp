@@ -5,12 +5,12 @@
  *      Author: Jordan
  */
 
-#include "Item.h"
+#include "IndependantItem.h"
 #include "ShaderManager.h"
 
 using namespace glrg;
 
-void Item::construct(ShaderManager *manager) {
+void IndependantItem::construct(ShaderManager *manager) {
     this->shaders = manager;
     this->vertexData  = new std::map<GLuint, GLRGhandle *>();
     this->uniformData = new std::map<std::string, GLRGhandle *>();
@@ -18,34 +18,34 @@ void Item::construct(ShaderManager *manager) {
 //    glBindVertexArray(vertexArrayObject);
 }
 
-Item::Item() {
+IndependantItem::IndependantItem() {
     this->construct(ShaderManager::getSingleton());
 }
 
-Item::Item(ShaderManager *manager) {
+IndependantItem::IndependantItem(ShaderManager *manager) {
     this->construct(manager);
 }
 
-Item::~Item()
+IndependantItem::~IndependantItem()
 {
     delete this->vertexData;
     delete this->uniformData;
     glDeleteVertexArrays(1, &vertexArrayObject);
 }
 
-void Item::setNumVerticies(GLsizei numVerticies) {
+void IndependantItem::setNumVerticies(GLsizei numVerticies) {
     this->numVerticies = numVerticies;
 }
 
-void Item::setDrawMode(GLenum mode) {
+void IndependantItem::setDrawMode(GLenum mode) {
     this->drawMode = mode;
 }
 
-void Item::setVertexData(const GLfloat *data, GLsizeiptr size, GLchar* attrib_name) {
+void IndependantItem::setVertexData(const GLfloat *data, GLsizeiptr size, GLchar* attrib_name) {
 	return this->setVertexData(data, size, glGetAttribLocation(this->shader, attrib_name));
 }
 
-void Item::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint attrib_loc) {
+void IndependantItem::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint attrib_loc) {
     GLRGhandle *handle = this->vertexData->operator [](attrib_loc);
     
     if(handle == NULL) {
@@ -81,21 +81,22 @@ void Item::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint attrib_loc
 }
 // todo: just explain this rather than have a function call.
 // or use preproccesor macros to make automatic overloading functions
-void Item::setUniformData(const GLfloat* data, GLsizei size, GLchar *uniform_name) {
+void IndependantItem::setUniformData(const GLfloat* data, GLsizei size, GLchar *uniform_name) {
 //    GLuint location = glGetUniformLocation(self->shader, uniform_name);
 //    glUniform...(location, size, GL_FALSE, *data);
 ////    glUniformMatrix4fv(iTransform, 1, GL_FALSE, *mvpMatrix);
 }
-void Item::setShaderProgram(GLuint program) {
+
+void IndependantItem::setShaderProgram(GLuint program) {
     this->shader = program;
     // todo: rebind attribs
 }
 
-void Item::Draw() {
+void IndependantItem::Draw() {
     // todo: also load shader and uniforms.
     // load our vertex array object, draw it, unload it.
     glBindVertexArray(vertexArrayObject);
-//    glDrawArrays(this->drawMode, 0, this->numVerticies);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+    glDrawArrays(this->drawMode, 0, this->numVerticies);
+//    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
     glBindVertexArray(0);
 }
