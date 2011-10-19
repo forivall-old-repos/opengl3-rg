@@ -15,11 +15,11 @@ namespace glrg {
 
 class GeometryReprImplGlrgShader: public glrg::GeometryRepr {
 protected:
-	ShaderRepr *shader;
+	ShaderInfo *shader;
 	GLint getUnitSize(GLuint);
 	GLint getType(GLuint);
 public:
-	GeometryReprImplGlrgShader(ShaderRepr *shader);
+	GeometryReprImplGlrgShader(ShaderInfo *shader);
 	virtual ~GeometryReprImplGlrgShader();
 };
 

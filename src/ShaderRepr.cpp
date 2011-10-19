@@ -9,26 +9,13 @@
 
 using namespace glrg;
 
-glrg::ShaderRepr::ShaderRepr(ShaderManager *manager) {
-	if(manager == NULL) {
-		manager = ShaderManager::getSingleton();
-	}
-	this->manager = manager;
+glrg::ShaderRepr::ShaderRepr(ShaderManager *manager) :
+	ShaderInfo(manager) {
 	this->uniformData = new std::map<std::string, GLRGhandle *>();
 }
 
 glrg::ShaderRepr::~ShaderRepr() {
 	delete this->uniformData;
-}
-
-GLint glrg::ShaderRepr::getUnitSize(GLuint attrib_id)
-{
-	return manager->getUnitSize(shader, attrib_id);
-}
-
-void glrg::ShaderRepr::setShaderProgram(GLuint program)
-{
-	this->shader = program;
 }
 
 void glrg::ShaderRepr::setUniformData(UNIFORM_TYPE type, 
@@ -61,14 +48,6 @@ void glrg::ShaderRepr::setUniformData(UNIFORM_TYPE type,
 	case UNIFORM_3IV:	  glUniform3iv(location, 3, data); break;
 	default: throw "invalid argument";
 	}
-}
-
-
-
-
-GLint glrg::ShaderRepr::getType(GLuint attrib_id)
-{
-	return manager->getType(shader, attrib_id);
 }
 
 

@@ -10,6 +10,7 @@ CPP_SRCS += \
 ../src/GeometryReprImplGlrgShader.cpp \
 ../src/Guard.cpp \
 ../src/IndependantItem.cpp \
+../src/ShaderInfo.cpp \
 ../src/ShaderManager.cpp \
 ../src/ShaderRepr.cpp \
 ../src/math3d.cpp 
@@ -21,6 +22,7 @@ OBJS += \
 ./src/GeometryReprImplGlrgShader.o \
 ./src/Guard.o \
 ./src/IndependantItem.o \
+./src/ShaderInfo.o \
 ./src/ShaderManager.o \
 ./src/ShaderRepr.o \
 ./src/math3d.o 
@@ -32,6 +34,7 @@ CPP_DEPS += \
 ./src/GeometryReprImplGlrgShader.d \
 ./src/Guard.d \
 ./src/IndependantItem.d \
+./src/ShaderInfo.d \
 ./src/ShaderManager.d \
 ./src/ShaderRepr.d \
 ./src/math3d.d 

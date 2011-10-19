@@ -10,6 +10,7 @@
 
 #include "Guard.h"
 #include "ShaderManager.h"
+#include "ShaderInfo.h"
 
 namespace glrg {
 //	UNIFORM_1F = 0,
@@ -31,24 +32,15 @@ enum UNIFORM_TYPE {
 	UNIFORM_LAST
 };
 
-class ShaderRepr {
-protected:
-    ShaderManager *manager;
+class ShaderRepr: public ShaderInfo {
 public:
 	ShaderRepr(ShaderManager *);
 	virtual ~ShaderRepr();
-	void setShaderProgram(GLuint);
 	void setUniformData(UNIFORM_TYPE, const GLfloat* data, GLchar *uniform_name);
 	void setUniformData(UNIFORM_TYPE, const GLfloat* data, GLuint location);
 	void setUniformData(UNIFORM_TYPE, const GLint* data, GLuint location);
 	
-	GLint getUnitSize(GLuint);
-	GLint getType(GLuint);
-	
-//	GLuint getAttribLocation()
-	
 	std::map<std::string, GLRGhandle *> *uniformData;
-	GLuint shader;
 };
 
 }
