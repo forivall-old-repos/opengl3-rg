@@ -24,6 +24,7 @@ public:
 	void setNumVerticies(GLsizei);
 //	void setVertexData(const GLfloat*, GLsizeiptr, GLchar *);
 	void setVertexData(const GLfloat*, GLsizeiptr, GLuint);
+	void setVertexData(const vertexData_t*, GLuint);
 	
 	std::map<GLuint, GLRGhandle *> *vertexData;
 	GLuint vertexArrayObject;

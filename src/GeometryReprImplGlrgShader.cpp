@@ -9,7 +9,7 @@
 
 namespace glrg {
 
-GeometryReprImplGlrgShader::GeometryReprImplGlrgShader(ShaderRepr *shader)
+GeometryReprImplGlrgShader::GeometryReprImplGlrgShader(ShaderInfo *shader)
 : GeometryRepr() {
 	this->shader = shader;
 }

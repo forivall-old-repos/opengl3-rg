@@ -68,5 +68,12 @@ void glrg::GeometryRepr::setVertexData(
 	}
 }
 
+void glrg::GeometryRepr::setVertexData(const vertexData_t *data, GLuint attrib_loc)
+{
+	this->setVertexData(data->data, data->size, attrib_loc);
+}
+
+
+
 
 
