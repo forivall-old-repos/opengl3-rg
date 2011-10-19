@@ -19,12 +19,14 @@ struct GLRGhandle {
 
 class Guard {
 public:
-//    virtual ~Guard();
+    virtual ~Guard() = 0;
     
     virtual void Draw() = 0;
 };
-
 }
+
+
+
 
 
 #endif /* GUARD_H_ */
