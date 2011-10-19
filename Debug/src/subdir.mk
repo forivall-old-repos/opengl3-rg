@@ -5,20 +5,32 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Aggregate.cpp \
-../src/Item.cpp \
+../src/CloneItem.cpp \
+../src/GeometryRepr.cpp \
+../src/GeometryReprImplGlrgShader.cpp \
+../src/IndependantItem.cpp \
 ../src/ShaderManager.cpp \
+../src/ShaderRepr.cpp \
 ../src/math3d.cpp 
 
 OBJS += \
 ./src/Aggregate.o \
-./src/Item.o \
+./src/CloneItem.o \
+./src/GeometryRepr.o \
+./src/GeometryReprImplGlrgShader.o \
+./src/IndependantItem.o \
 ./src/ShaderManager.o \
+./src/ShaderRepr.o \
 ./src/math3d.o 
 
 CPP_DEPS += \
 ./src/Aggregate.d \
-./src/Item.d \
+./src/CloneItem.d \
+./src/GeometryRepr.d \
+./src/GeometryReprImplGlrgShader.d \
+./src/IndependantItem.d \
 ./src/ShaderManager.d \
+./src/ShaderRepr.d \
 ./src/math3d.d 
 
 

@@ -113,8 +113,7 @@ void glrg::ShaderManager::addProgramInfo(
         GLint unit_size,
         GLenum type) {
     
-	info[program][attrib_loc] = {
-			attrib_loc, unit_size, type};
+	info[program][attrib_loc] = ShaderAttribInfo(attrib_loc, unit_size, type);
 	
     //info[program][attrib_name] = ShaderAttribInfo(
 //    glGetAttribLocation(program, attrib_name), unit_size, type);

@@ -8,14 +8,17 @@
 #ifndef CLONEITEM_H_
 #define CLONEITEM_H_
 
-#include "Item.h"
-
+#include "ShaderRepr.h"
+#include "GeometryRepr.h"
+namespace glrg {
 class CloneItem: public glrg::Guard {
 private:
-	glrg::Item *original;
+	glrg::GeometryRepr *original;
+//	void construct(glrg::GeometryRepr *, glrg::ShaderManager *);
+	
 public:
-	CloneItem(glrg::Item *);
+	CloneItem(glrg::GeometryRepr *, glrg::ShaderManager *);
 	virtual ~CloneItem();
 };
-
+}
 #endif /* CLONEITEM_H_ */

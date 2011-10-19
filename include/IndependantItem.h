@@ -11,23 +11,20 @@
 
 #include "Guard.h"
 #include "ShaderManager.h"
+#include "ShaderRepr.h"
+#include "GeometryReprImplGlrgShader.h"
 #include <string>
 #include <map>
 
 namespace glrg {
-struct GLRGhandle {
-    GLuint GLhandle;
-    GLsizeiptr size;
-    GLuint attribLocation;
-};
 
 class IndependantItem : public glrg::Guard 
 {
     void construct(ShaderManager *);
-
 protected:
-    ShaderManager *shaders;
     GLenum drawMode;
+    ShaderRepr *shader;
+    GeometryRepr *geometry;
     
 public:
     IndependantItem();
@@ -43,12 +40,6 @@ public:
     void setShaderProgram(GLuint);
     
     virtual void Draw();
-    
-    std::map<GLuint, GLRGhandle *> *vertexData;
-    std::map<std::string, GLRGhandle *> *uniformData;
-    GLuint vertexArrayObject;
-    GLuint shader;
-    GLsizei numVerticies;
 };
 
 }
