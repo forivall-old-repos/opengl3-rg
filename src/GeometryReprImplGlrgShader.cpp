@@ -16,7 +16,6 @@ GeometryReprImplGlrgShader::GeometryReprImplGlrgShader(ShaderRepr *shader)
 
 GLint GeometryReprImplGlrgShader::getUnitSize(GLuint attrib_id)
 {
-	printf("Bah");
 	return this->shader->getUnitSize(attrib_id);
 }
 
