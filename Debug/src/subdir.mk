@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../src/CloneItem.cpp \
 ../src/GeometryRepr.cpp \
 ../src/GeometryReprImplGlrgShader.cpp \
+../src/Guard.cpp \
 ../src/IndependantItem.cpp \
 ../src/ShaderManager.cpp \
 ../src/ShaderRepr.cpp \
@@ -18,6 +19,7 @@ OBJS += \
 ./src/CloneItem.o \
 ./src/GeometryRepr.o \
 ./src/GeometryReprImplGlrgShader.o \
+./src/Guard.o \
 ./src/IndependantItem.o \
 ./src/ShaderManager.o \
 ./src/ShaderRepr.o \
@@ -28,6 +30,7 @@ CPP_DEPS += \
 ./src/CloneItem.d \
 ./src/GeometryRepr.d \
 ./src/GeometryReprImplGlrgShader.d \
+./src/Guard.d \
 ./src/IndependantItem.d \
 ./src/ShaderManager.d \
 ./src/ShaderRepr.d \
