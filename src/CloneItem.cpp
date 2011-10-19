@@ -7,11 +7,11 @@
 
 #include "CloneItem.h"
 
-CloneItem::CloneItem(glrg::IndependantItem *origin) {
-	this->original = origin;
+glrg::CloneItem::CloneItem(glrg::GeometryRepr *original, glrg::ShaderManager *shaders) {
+	
 }
 
-CloneItem::~CloneItem() {
+glrg::CloneItem::~CloneItem() {
 	// TODO Auto-generated destructor stub
 }
 

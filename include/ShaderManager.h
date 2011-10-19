@@ -23,7 +23,9 @@ struct ShaderAttribInfo {
     GLint attrib_position;
     GLint unit_size;
     GLenum type;
-    // todo: make constructor
+    ShaderAttribInfo() : attrib_position(), unit_size(), type() {}
+    ShaderAttribInfo(GLint attrib_position, GLint unit_size, GLenum type) :
+    	attrib_position(attrib_position), unit_size(unit_size), type(type) {}
 };
 
 char* ReadShaderSource(const char* shaderFile);
