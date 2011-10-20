@@ -45,8 +45,7 @@ void IndependantItem::setVertexData(const GLfloat *data, GLsizeiptr size, GLchar
 void IndependantItem::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint attrib_loc) {
     this->geometry->setVertexData(data, size, attrib_loc);
 }
-// todo: just explain this rather than have a function call.
-// or use preproccesor macros to make automatic overloading functions
+
 void IndependantItem::setUniformData(const GLfloat* data, GLsizei size, GLchar *uniform_name) {
 //    GLuint location = glGetUniformLocation(self->shader, uniform_name);
 //    glUniform...(location, size, GL_FALSE, *data);
@@ -56,6 +55,16 @@ void IndependantItem::setUniformData(const GLfloat* data, GLsizei size, GLchar *
 void IndependantItem::setShaderProgram(GLuint program) {
     this->shader->setShaderProgram(program);
     // todo: rebind attribs
+}
+
+void glrg::IndependantItem::setVertexData(const vertexData_t &data, GLuint attrib_loc)
+{
+	this->geometry->setVertexData(data, attrib_loc);
+}
+
+GeometryRepr *glrg::IndependantItem::getGeometryRepr()
+{
+	return this->geometry;
 }
 
 void IndependantItem::Draw() {

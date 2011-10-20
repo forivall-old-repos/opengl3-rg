@@ -34,7 +34,9 @@ void glrg::GeometryRepr::setNumVerticies(GLsizei numVerticies) {
 void glrg::GeometryRepr::setVertexData(
 		const GLfloat *data, GLsizeiptr size, GLuint attrib_loc) {
 //	GLRGhandle *handle = (*(this->vertexData))[attrib_loc];
+//	std::cout << data << " " << *data << std::endl;
 	GLRGhandle *handleinfo = this->vertexData->operator [](attrib_loc);
+//	std::cout << data << " " << *data << std::endl;
 	
 	if(handleinfo == NULL) {
 		// initialize the data
@@ -68,9 +70,9 @@ void glrg::GeometryRepr::setVertexData(
 	}
 }
 
-void glrg::GeometryRepr::setVertexData(const vertexData_t *data, GLuint attrib_loc)
+void glrg::GeometryRepr::setVertexData(const vertexData_t &data, GLuint attrib_loc)
 {
-	this->setVertexData(data->data, data->size, attrib_loc);
+	this->setVertexData(data.data, data.size, attrib_loc);
 }
 
 
