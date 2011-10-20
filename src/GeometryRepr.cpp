@@ -62,6 +62,7 @@ void glrg::GeometryRepr::setVertexData(
 				GL_FALSE, 0, 0);
 
 //        glBindVertexArray(0);
+//		this->vertexData->operator [](attrib_loc) = handleinfo;
 	}
 	else {
 		// just overwrite the data. done.

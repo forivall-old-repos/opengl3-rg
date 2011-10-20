@@ -46,12 +46,6 @@ void IndependantItem::setVertexData(const GLfloat *data, GLsizeiptr size, GLuint
     this->geometry->setVertexData(data, size, attrib_loc);
 }
 
-void IndependantItem::setUniformData(const GLfloat* data, GLsizei size, GLchar *uniform_name) {
-//    GLuint location = glGetUniformLocation(self->shader, uniform_name);
-//    glUniform...(location, size, GL_FALSE, *data);
-////    glUniformMatrix4fv(iTransform, 1, GL_FALSE, *mvpMatrix);
-}
-
 void IndependantItem::setShaderProgram(GLuint program) {
     this->shader->setShaderProgram(program);
     // todo: rebind attribs
@@ -67,8 +61,18 @@ GeometryRepr *glrg::IndependantItem::getGeometryRepr()
 	return this->geometry;
 }
 
+void glrg::IndependantItem::setUniformData(UNIFORM_TYPE type, const GLfloat *data, GLchar *name)
+{
+	this->shader->setUniformData(type, data, name);
+}
+
+void glrg::IndependantItem::setUniformData(UNIFORM_TYPE type, const GLfloat *data, GLuint location)
+{
+	this->shader->setUniformData(type, data, location);
+}
+
 void IndependantItem::Draw() {
-    // todo: also load shader and uniforms.
+    this->shader->Draw();
     // load our vertex array object, draw it, unload it.
     glBindVertexArray(this->geometry->vertexArrayObject);
     glDrawArrays(this->drawMode, 0, this->geometry->numVerticies);
