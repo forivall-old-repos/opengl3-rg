@@ -36,8 +36,11 @@ public:
     void setDrawMode(GLenum);
     void setVertexData(const GLfloat*, GLsizeiptr, GLchar *);
     void setVertexData(const GLfloat*, GLsizeiptr, GLuint);
+    void setVertexData(const vertexData_t &, GLuint);
     void setUniformData(const GLfloat*, GLsizei, GLchar *);
     void setShaderProgram(GLuint);
+    
+    GeometryRepr *getGeometryRepr();
     
     virtual void Draw();
 };
