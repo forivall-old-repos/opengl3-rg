@@ -37,7 +37,8 @@ public:
     void setVertexData(const GLfloat*, GLsizeiptr, GLchar *);
     void setVertexData(const GLfloat*, GLsizeiptr, GLuint);
     void setVertexData(const vertexData_t &, GLuint);
-    void setUniformData(const GLfloat*, GLsizei, GLchar *);
+    void setUniformData(UNIFORM_TYPE type, const GLfloat *, GLchar *);
+    void setUniformData(UNIFORM_TYPE type, const GLfloat *, GLuint location);
     void setShaderProgram(GLuint);
     
     GeometryRepr *getGeometryRepr();
